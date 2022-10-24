@@ -16,10 +16,10 @@ case "$1" in
         ;;
     stop)
         echo "Unloading scull driver"
-        start-stop-daemon -K -n sculldriver
+        start-stop-daemon -K -n sculldriver -a /usr/bin/scull_unload
 
         echo "Unloading faulty driver"
-        start-stop-daemon -K -n faultydriver
+        start-stop-daemon -K -n faultydriver -a /usr/bin/module_unload
 
         echo "Removing hello module"
         rmmod hello
