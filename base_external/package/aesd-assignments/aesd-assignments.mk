@@ -13,8 +13,6 @@ AESD_ASSIGNMENTS_SITE = 'git@github.com:cu-ecen-aeld/assignments-3-and-later-sur
 AESD_ASSIGNMENTS_SITE_METHOD = git
 AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
 
-AESD_ASSIGNMENTS_MODULE_SUBDIRS = aesd-char-driver
-
 define AESD_ASSIGNMENTS_BUILD_CMDS
 	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/server all
 endef
@@ -29,7 +27,12 @@ define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 	# AESD char driver
 	$(INSTALL) -m 0755 $(@D)/aesd-char-driver/aesdchar_load $(TARGET_DIR)/usr/bin
 	$(INSTALL) -m 0755 $(@D)/aesd-char-driver/aesdchar_unload $(TARGET_DIR)/usr/bin
+	$(INSTALL) -m 0755 $(@D)/aesd-char-driver/aesdchar.ko $(TARGET_DIR)/usr/bin
 	
 endef
+
+AESD_ASSIGNMENTS_MODULE_SUBDIRS = aesd-char-driver
+AESD_ASSIGNMENTS_MODULE_SUBDIRS += server
+
 $(eval $(kernel-module))
 $(eval $(generic-package))
