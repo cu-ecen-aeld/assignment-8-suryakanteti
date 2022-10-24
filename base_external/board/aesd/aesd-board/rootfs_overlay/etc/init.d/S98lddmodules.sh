@@ -12,7 +12,7 @@ case "$1" in
         modprobe hello
         
         echo "Loading AESD char driver"
-        start-stop-daemon -S -n aesdchardriver -a /usr/bin/aesdchar_load
+        /usr/bin/aesdchar_load
         ;;
     stop)
         echo "Unloading scull driver"
@@ -25,7 +25,7 @@ case "$1" in
         rmmod hello
         
         echo "Unloading AESD char driver"
-        start-stop-daemon -K -n aesdchardriver -a /usr/bin/aesdchar_unload
+        aesdchar_unload
         ;;
     *)
         echo "Usage: $0 {start|stop}"

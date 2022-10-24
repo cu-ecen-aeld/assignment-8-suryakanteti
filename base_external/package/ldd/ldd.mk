@@ -5,7 +5,7 @@
 ##############################################################
 
 # Assignment 7 commit number
-LDD_VERSION = ca25a58d56120e16d9ca78b53e280b40e053af42
+LDD_VERSION = de419c576c43f9fe26da3cf0ff72b80b4cdb8b29
 
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
