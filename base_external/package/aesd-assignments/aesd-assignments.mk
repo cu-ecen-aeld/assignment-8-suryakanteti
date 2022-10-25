@@ -5,7 +5,7 @@
 ##############################################################
 
 #TODO: Fill up the contents below in order to reference your assignment 3 git contents
-AESD_ASSIGNMENTS_VERSION = ff3274cfc97b5a4f6d6ae075cd64de7b6d0d28fd
+AESD_ASSIGNMENTS_VERSION = 33fe97fa33663bd72d75bbf2788fce3e532a756b
 # Note: Be sure to reference the *ssh* repository URL here (not https) to work properly
 # with ssh keys and the automated build/test system.
 # Your site should start with git@github.com:
@@ -13,8 +13,13 @@ AESD_ASSIGNMENTS_SITE = 'git@github.com:cu-ecen-aeld/assignments-3-and-later-sur
 AESD_ASSIGNMENTS_SITE_METHOD = git
 AESD_ASSIGNMENTS_GIT_SUBMODULES = YES
 
+AESD_ASSIGNMENTS_MODULE_SUBDIRS = aesd-char-driver
+AESD_ASSIGNMENTS_MODULE_SUBDIRS += server
+
 define AESD_ASSIGNMENTS_BUILD_CMDS
+
 	$(MAKE) $(TARGET_CONFIGURE_OPTS) -C $(@D)/server all
+
 endef
 
 # TODO add your writer, finder and finder-test utilities/scripts to the installation steps below
@@ -27,12 +32,8 @@ define AESD_ASSIGNMENTS_INSTALL_TARGET_CMDS
 	# AESD char driver
 	$(INSTALL) -m 0755 $(@D)/aesd-char-driver/aesdchar_load $(TARGET_DIR)/usr/bin
 	$(INSTALL) -m 0755 $(@D)/aesd-char-driver/aesdchar_unload $(TARGET_DIR)/usr/bin
-	$(INSTALL) -m 0755 $(@D)/aesd-char-driver/aesdchar.ko $(TARGET_DIR)/usr/bin
 	
 endef
-
-AESD_ASSIGNMENTS_MODULE_SUBDIRS = aesd-char-driver
-AESD_ASSIGNMENTS_MODULE_SUBDIRS += server
 
 $(eval $(kernel-module))
 $(eval $(generic-package))
